@@ -96,9 +96,7 @@ public class SpotifyPlayHistoryClient: PlayHistoryInterface {
     }
 
     private func getRecentlyPlayed(client: SpotifyClient, callback: @escaping ([PlayRecord]) -> Void) {
-        print("Getting recently played with client:", client)
         client.currentUserRecentlyPlayed {
-            print("Got something", $0)
             switch $0 {
             case .success(let page):
                 self.getPlayHistory(
