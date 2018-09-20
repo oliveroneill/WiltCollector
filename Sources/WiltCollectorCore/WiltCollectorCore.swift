@@ -38,6 +38,7 @@ public struct User: Equatable {
     // These tokens are Spotify specific
     let accessToken: String
     let refreshAccessToken: String
+    let expiresAt: Date
 }
 
 /// Errors that occur when getting all users

@@ -60,7 +60,8 @@ final class WiltCollectorCoreTests: XCTestCase {
     let user = User(
         id: "id-123x",
         accessToken: "token1",
-        refreshAccessToken: "token2"
+        refreshAccessToken: "token2",
+        expiresAt: Date()
     )
     let records = [
         generateRecord(track: "x", artist: "ART", id: "id-123"),

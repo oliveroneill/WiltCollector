@@ -22,7 +22,6 @@ func main() {
 
     guard let clientID = ProcessInfo.processInfo.environment["SPOTIFY_CLIENT_ID"] else {
         fatalError("Client ID not set")
-
     }
     guard let clientSecret = ProcessInfo.processInfo.environment["SPOTIFY_CLIENT_SECRET"] else {
         fatalError("Client Secret not set")
@@ -37,16 +36,19 @@ func main() {
     func updateUsersRecursively(index: Int) {
         // Check if we've finished all users
         if index >= users.count {
+            print("Finished updating users")
             dispatchGroup.leave()
             return
         }
         let user = users[index]
+        print("Creating client with", clientID)
         // Create client for this user
         let client = SpotifyPlayHistoryClient(
             user: user,
             clientID: clientID,
             clientSecret: clientSecret
         )
+        print("Updating user:", user)
         update(user: user, client: client, from: db) {
             if let e = $0 {
                 // Don't stop when errors occur

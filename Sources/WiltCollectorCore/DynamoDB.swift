@@ -22,13 +22,18 @@ public class DynamoDBInterface: DatabaseInterface {
         return try items.map {
             guard let id = $0["id"]?.s,
                 let accessToken = $0["access_token"]?.s,
-                let refreshAccessToken = $0["refresh_token"]?.s else {
+                let refreshAccessToken = $0["refresh_token"]?.s,
+                let expiresAt = $0["expires_at"]?.n else {
                     throw UserQueryError.unexpectedFailure
+            }
+            guard let interval = Double(expiresAt) else {
+                throw UserQueryError.unexpectedFailure
             }
             return User(
                 id: id,
                 accessToken: accessToken,
-                refreshAccessToken: refreshAccessToken
+                refreshAccessToken: refreshAccessToken,
+                expiresAt: Date(timeIntervalSinceReferenceDate: TimeInterval(interval))
             )
         }
     }
