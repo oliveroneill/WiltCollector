@@ -3,7 +3,7 @@ import SwiftAWSDynamodb
 import AWSSDKSwiftCore
 
 let userTable = "WiltUsers"
-let historyTable = "SpotifyHistory"
+let historyTable = "WiltPlayHistory"
 
 /// DynamoDB interface for getting users and updating play histories
 public class DynamoDBInterface: DatabaseInterface {
