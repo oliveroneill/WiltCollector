@@ -14,9 +14,13 @@ To build a packaged zip that contains the built program, run:
 ```bash
 ./deploy.sh
 ```
+This will create a zip called `WiltCollector.zip` in `deploy/`.
 This can then be uploaded to S3 and connected to Lambda. `index.js` is the
 Lambda handler and currently logs all output from the Swift program and the
 handler returns an empty string on completion.
+
+The `deploy/` directory can be deleted at any time, it contains temporary
+build items to make the S3 package.
 
 ## AWS Setup
 ### Lambda
