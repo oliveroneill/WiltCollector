@@ -68,6 +68,7 @@ public class SpotifyPlayHistoryClient: PlayHistoryInterface {
                     state: "", scope: requiredScope
                 )
                 // Refresh token if required
+                // TODO: this logic is getting complicated, I should add tests
                 oauth.refreshAccessToken(refreshToken: refreshToken) {
                     switch $0 {
                     case .success(let token):
