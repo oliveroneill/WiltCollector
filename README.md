@@ -1,5 +1,12 @@
 # WiltCollector
 
+[![Build Status](https://travis-ci.org/oliveroneill/WiltCollector.svg?branch=master)](https://travis-ci.org/oliveroneill/WiltCollector)
+[![Platform](https://img.shields.io/badge/Swift-4.1-orange.svg)](https://img.shields.io/badge/Swift-4.1-orange.svg)
+[![Swift Package Manager](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
+![macOS](https://img.shields.io/badge/os-macOS-green.svg?style=flat)
+![Linux](https://img.shields.io/badge/os-linux-green.svg?style=flat)
+
+
 A program for periodically updating Wilt user's play histories.
 
 This is intended to run on AWS Lambda using CloudWatch to trigger updates.
