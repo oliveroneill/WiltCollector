@@ -11,13 +11,17 @@ import Foundation
 import WiltCollectorCore
 
 func main() {
-    let db = DynamoDBInterface()
+    let db: WiltDatabase
+    do {
+        db = try WiltDatabase()
+    } catch {
+        fatalError("Failed to create database: \(error)")
+    }
     let users: [User]
     do {
         users = try db.getUsers()
     } catch {
-        print("Getting users failed", error)
-        return
+        fatalError("Getting users failed: \(error)")
     }
 
     guard let clientID = ProcessInfo.processInfo.environment["SPOTIFY_CLIENT_ID"] else {

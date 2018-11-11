@@ -29,7 +29,7 @@ public protocol PlayHistoryInterface {
 public protocol DatabaseInterface {
     func getUsers() throws -> [User]
     func getTimeOfLastUpdate(user: User) throws -> TimeInterval
-    func insert(item: PlayRecord, user: User) throws
+    func insert(items: [PlayRecord], user: User) throws
 }
 
 /// A user
@@ -71,17 +71,13 @@ public func update(user: User, client: PlayHistoryInterface,
                    completionHandler: @escaping ((Error?) -> Void)) {
     let lastUpdate = (try? dao.getTimeOfLastUpdate(user: user)) ?? 0
     client.getRecentlyPlayed {
-        for item in $0 {
-            guard item.playedAt.timeIntervalSince1970 > lastUpdate else {
-                continue
-            }
-            do {
-                try dao.insert(item: item, user: user)
-            } catch {
-                print("Failed to insert because of \(error)")
-                // Ignore errors and continue inserting
-            }
+        let filtered = $0.filter { $0.playedAt.timeIntervalSince1970 > lastUpdate }
+        do {
+            try dao.insert(items: filtered, user: user)
+            completionHandler(nil)
+        } catch {
+            print("Failed to insert because of \(error)")
+            completionHandler(error)
         }
-        completionHandler(nil)
     }
 }

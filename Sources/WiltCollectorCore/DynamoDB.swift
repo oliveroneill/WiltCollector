@@ -3,10 +3,9 @@ import SwiftAWSDynamodb
 import AWSSDKSwiftCore
 
 let userTable = "WiltUsers"
-let historyTable = "WiltPlayHistory"
 
 /// DynamoDB interface for getting users and updating play histories
-public class DynamoDBInterface: DatabaseInterface {
+public class DynamoDBInterface {
     private let db = Dynamodb()
     public init() {}
 
@@ -36,61 +35,5 @@ public class DynamoDBInterface: DatabaseInterface {
                 expiresAt: Date(timeIntervalSinceReferenceDate: TimeInterval(interval))
             )
         }
-    }
-
-    /// Get the time of the last play for the specified user
-    ///
-    /// - Parameter user: The user to query
-    /// - Returns: Time interval since 1970 of the last play of the user
-    /// - Throws: If the database query fails
-    public func getTimeOfLastUpdate(user: User) throws -> TimeInterval {
-        let result = try db.query(
-            Dynamodb.QueryInput(
-                keyConditions: [
-                    "user_id": Dynamodb.Condition(
-                        comparisonOperator: .eq,
-                        attributeValueList: [Dynamodb.AttributeValue(s: user.id)]
-                    )
-                ],
-                tableName: historyTable,
-                scanIndexForward: false,
-                limit: 1
-            )
-        )
-        guard let latest = result.items?.first else {
-            throw LastUpdateError.noEntries
-        }
-        guard let date = latest["date"]?.n else {
-            throw LastUpdateError.invalidRecord
-        }
-        guard let time = TimeInterval(date) else {
-            throw LastUpdateError.invalidDate
-        }
-        return time
-    }
-
-    /// Insert record for user
-    ///
-    /// - Parameters:
-    ///   - item: The track that was played
-    ///   - user: The user that played the track
-    /// - Throws: If the insert fails
-    public func insert(item: PlayRecord, user: User) throws {
-        let track = item.track
-        let artists = track.artists.map { $0.name }
-        let playedAt = "\(item.playedAt.timeIntervalSince1970)"
-        _ = try db.putItem(
-            Dynamodb.PutItemInput(
-                item: [
-                    "primary_artist": Dynamodb.AttributeValue(s: artists.first),
-                    "artists": Dynamodb.AttributeValue(ss: artists),
-                    "name": Dynamodb.AttributeValue(s: track.name),
-                    "date": Dynamodb.AttributeValue(n: playedAt),
-                    "track_id": Dynamodb.AttributeValue(s: track.id),
-                    "user_id": Dynamodb.AttributeValue(s: user.id),
-                    ],
-                tableName: historyTable
-            )
-        )
     }
 }

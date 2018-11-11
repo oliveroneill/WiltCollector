@@ -2,12 +2,39 @@
   "object": {
     "pins": [
       {
+        "package": "Auth",
+        "repositoryURL": "https://github.com/saga-dash/auth-library-swift.git",
+        "state": {
+          "branch": "master",
+          "revision": "26afd1ad24463fa22168ae9e6c25df3bd9b42884",
+          "version": null
+        }
+      },
+      {
         "package": "AWSSDKSwiftCore",
         "repositoryURL": "https://github.com/noppoMan/aws-sdk-swift-core.git",
         "state": {
           "branch": null,
           "revision": "48298a7bec6c838553f314cb48c81f2a363e8253",
           "version": "1.0.10"
+        }
+      },
+      {
+        "package": "BigInt",
+        "repositoryURL": "https://github.com/attaswift/BigInt",
+        "state": {
+          "branch": null,
+          "revision": "018a5925f60f9e0523edd261de394a0898fe95b7",
+          "version": "3.1.0"
+        }
+      },
+      {
+        "package": "BigQuerySwift",
+        "repositoryURL": "https://github.com/oliveroneill/BigQuerySwift.git",
+        "state": {
+          "branch": "query-support",
+          "revision": "90b2a6a80decf8d63b5a00c27d1ef4a9e9d6db68",
+          "version": null
         }
       },
       {
@@ -35,6 +62,15 @@
           "branch": null,
           "revision": "9ebe7fffd3f7d3cd3377696aeaa867a77f2418dd",
           "version": "1.0.1"
+        }
+      },
+      {
+        "package": "CryptoSwift",
+        "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "874280173e082cdd7ac6602be235914efe3f4dbc",
+          "version": "0.13.0"
         }
       },
       {
@@ -92,12 +128,30 @@
         }
       },
       {
+        "package": "SipHash",
+        "repositoryURL": "https://github.com/attaswift/SipHash",
+        "state": {
+          "branch": null,
+          "revision": "e325083424688055363bbfcb7f1a440d7d7a1bae",
+          "version": "1.2.2"
+        }
+      },
+      {
         "package": "Soft",
         "repositoryURL": "https://github.com/oliveroneill/Soft.git",
         "state": {
           "branch": "master",
-          "revision": "3f76fb2ac43e1101b932575bd41fb8833b00a0cb",
+          "revision": "3fb820c47bf08eb9cf3e8d3f23ec366707c1f5b8",
           "version": null
+        }
+      },
+      {
+        "package": "SwiftyBase64",
+        "repositoryURL": "https://github.com/timburks/SwiftyBase64",
+        "state": {
+          "branch": null,
+          "revision": "01f2f5c4886d0b8d7cb8c0e96b2aefccd1c7ccd8",
+          "version": "1.2.0"
         }
       },
       {

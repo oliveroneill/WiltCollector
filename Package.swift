@@ -12,10 +12,11 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/oliveroneill/Soft.git", .branch("master")),
         .package(url: "https://github.com/swift-aws/dynamodb.git", .upToNextMajor(from: "1.0.0")),
+        .package(url: "https://github.com/oliveroneill/BigQuerySwift.git", .branch("query-support")),
     ],
     targets: [
         .target(name: "WiltCollector", dependencies: ["WiltCollectorCore"]),
-        .target(name: "WiltCollectorCore", dependencies: ["Soft", "SwiftAWSDynamodb"]),
+        .target(name: "WiltCollectorCore", dependencies: ["Soft", "SwiftAWSDynamodb", "BigQuerySwift"]),
         .testTarget(
             name: "WiltCollectorCoreTests",
             dependencies: ["WiltCollectorCore"]),

@@ -2,6 +2,7 @@ import XCTest
 
 extension WiltCollectorCoreTests {
     static let __allTests = [
+        ("testDateResultDecode", testDateResultDecode),
         ("testUpdate", testUpdate),
         ("testUpdateFiltersDates", testUpdateFiltersDates),
         ("testUpdateHandlesFailedInserts", testUpdateHandlesFailedInserts),

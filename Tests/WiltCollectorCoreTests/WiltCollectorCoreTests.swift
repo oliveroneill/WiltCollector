@@ -27,7 +27,7 @@ final class WiltCollectorCoreTests: XCTestCase {
 
     class FakeDatabase: DatabaseInterface {
         var lastUpdateCalls: [User] = []
-        var insertCalls: [(PlayRecord, User)] = []
+        var insertCalls: [([PlayRecord], User)] = []
         private let timeOfLastUpdate: TimeInterval
         init(timeOfLastUpdate: TimeInterval) {
             self.timeOfLastUpdate = timeOfLastUpdate
@@ -42,8 +42,8 @@ final class WiltCollectorCoreTests: XCTestCase {
             return timeOfLastUpdate
         }
 
-        func insert(item: PlayRecord, user: User) throws {
-            insertCalls.append((item, user))
+        func insert(items: [PlayRecord], user: User) throws {
+            insertCalls.append((items, user))
         }
     }
 
@@ -76,7 +76,8 @@ final class WiltCollectorCoreTests: XCTestCase {
             XCTAssertNil($0)
             XCTAssertEqual(1, db.lastUpdateCalls.count)
             XCTAssertEqual(self.user, db.lastUpdateCalls.first)
-            XCTAssert(self.records.map({ ($0, self.user) }) == db.insertCalls)
+            XCTAssertEqual(1, db.insertCalls.count)
+            XCTAssert((self.records, self.user) == db.insertCalls.first!)
         }
     }
 
@@ -96,7 +97,8 @@ final class WiltCollectorCoreTests: XCTestCase {
             XCTAssertNil($0)
             XCTAssertEqual(1, db.lastUpdateCalls.count)
             XCTAssertEqual(self.user, db.lastUpdateCalls.first)
-            XCTAssert(self.records.map({ ($0, self.user) }) == db.insertCalls)
+            XCTAssertEqual(1, db.insertCalls.count)
+            XCTAssert((self.records, self.user) == db.insertCalls.first!)
         }
     }
 
@@ -107,15 +109,15 @@ final class WiltCollectorCoreTests: XCTestCase {
 
     func testUpdateHandlesFailedInserts() {
         class FakeDatabase: DatabaseInterface {
-            var insertCalls: [(PlayRecord, User)] = []
+            var insertCalls: [([PlayRecord], User)] = []
             func getUsers() throws -> [User] {
                 return []
             }
             func getTimeOfLastUpdate(user: User) throws -> TimeInterval {
                 return 0
             }
-            func insert(item: PlayRecord, user: User) throws {
-                insertCalls.append((item, user))
+            func insert(items: [PlayRecord], user: User) throws {
+                insertCalls.append((items, user))
                 if insertCalls.count == 0 {
                     throw TestError.err
                 }
@@ -125,13 +127,14 @@ final class WiltCollectorCoreTests: XCTestCase {
         let db = FakeDatabase()
         update(user: user, client: client, from: db) { [unowned self] in
             XCTAssertNil($0)
-            XCTAssert(self.records.map({ ($0, self.user) }) == db.insertCalls)
+            XCTAssertEqual(1, db.insertCalls.count)
+            XCTAssert((self.records, self.user) == db.insertCalls.first!)
         }
     }
 
     func testUpdateHandlesNoLastUpdate() {
         class FakeDatabase: DatabaseInterface {
-            var insertCalls: [(PlayRecord, User)] = []
+            var insertCalls: [([PlayRecord], User)] = []
             func getUsers() throws -> [User] {
                 return []
             }
@@ -140,15 +143,26 @@ final class WiltCollectorCoreTests: XCTestCase {
                 throw TestError.err
             }
 
-            func insert(item: PlayRecord, user: User) throws {
-                insertCalls.append((item, user))
+            func insert(items: [PlayRecord], user: User) throws {
+                insertCalls.append((items, user))
             }
         }
         let client = FakePlayHistory(return: records)
         let db = FakeDatabase()
         update(user: user, client: client, from: db) { [unowned self] in
             XCTAssertNil($0)
-            XCTAssert(self.records.map({ ($0, self.user) }) == db.insertCalls)
+            XCTAssertEqual(1, db.insertCalls.count)
+            XCTAssert((self.records, self.user) == db.insertCalls.first!)
         }
+    }
+
+    func testDateResultDecode() throws {
+        let data = """
+        {
+            "date": "1.535071435223E9"
+        }
+        """.data(using: .utf8)!
+        let result = try JSONDecoder().decode(DateResult.self, from: data)
+        XCTAssertEqual(1535071435.223, result.date)
     }
 }
