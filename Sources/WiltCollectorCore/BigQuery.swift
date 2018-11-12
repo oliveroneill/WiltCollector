@@ -72,7 +72,7 @@ public class BigQueryInterface {
     /// - Throws: If the database query fails
     public func getTimeOfLastUpdate(user: User) throws -> TimeInterval {
         let s = DispatchSemaphore(value: 0)
-        let query = "SELECT date FROM play_history WHERE user_id = '\(user.id)' ORDER BY date DESC LIMIT 1"
+        let query = "SELECT date FROM wilt_play_history.play_history WHERE user_id = '\(user.id)' ORDER BY date DESC LIMIT 1"
         var response: QueryCallResponse<DateResult>?
         try bigQuery.query(query) { (r: QueryCallResponse<DateResult>) in
             response = r
