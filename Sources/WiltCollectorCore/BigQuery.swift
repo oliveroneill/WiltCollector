@@ -32,7 +32,7 @@ struct DateResult: Codable, Equatable {
 public class BigQueryInterface {
     private let bigQuery: BigQueryClient<BigQuerySchema>
 
-    public init() throws {
+    public init(projectId: String) throws {
         let s = DispatchSemaphore(value: 0)
         var response: AuthResponse?
         let provider = BigQueryAuthProvider()
@@ -48,7 +48,7 @@ public class BigQueryInterface {
         case .token(let token):
             self.bigQuery = BigQueryClient(
                 authenticationToken: token,
-                projectID: "wilt-221210",
+                projectID: projectId,
                 datasetID: "wilt_play_history",
                 tableName: "play_history"
             )

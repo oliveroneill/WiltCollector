@@ -11,9 +11,12 @@ import Foundation
 import WiltCollectorCore
 
 func main() {
+    guard let projectId = ProcessInfo.processInfo.environment["BIGQUERY_PROJECT_ID"] else {
+        fatalError("Project ID not set")
+    }
     let db: WiltDatabase
     do {
-        db = try WiltDatabase()
+        db = try WiltDatabase(bigQueryProjectId: projectId)
     } catch {
         fatalError("Failed to create database: \(error)")
     }

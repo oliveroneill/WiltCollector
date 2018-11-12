@@ -4,8 +4,8 @@ public class WiltDatabase: DatabaseInterface {
     private let dynamo = DynamoDBInterface()
     private let bigQuery: BigQueryInterface
 
-    public init() throws {
-        bigQuery = try BigQueryInterface()
+    public init(bigQueryProjectId: String) throws {
+        bigQuery = try BigQueryInterface(projectId: bigQueryProjectId)
     }
 
     public func getUsers() throws -> [User] {
