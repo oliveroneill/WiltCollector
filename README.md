@@ -31,14 +31,22 @@ build items to make the S3 package.
 
 ## AWS Setup
 ### Lambda
-You'll need to set environment variables `SPOTIFY_CLIENT_ID` and
-`SPOTIFY_CLIENT_SECRET` in the Lambda console.
+You'll need to set environment variables `BIGQUERY_PROJECT_ID`,
+`SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` in the Lambda console.
 
 ### DynamoDB
 You'll need to create two tables, one for user's play histories and
 the other for a user's Spotify token info.
 
 ### Table Columns
-SpotifyHistory: user_id, date, artists, name, primary_artist, track_id
+play_history (BigQuery): user_id, date, artists, name, primary_artist, track_id
 
-WiltUsers: access_token, expires_at, refresh_token
+WiltUsers (DynamoDB): access_token, expires_at, refresh_token
+
+## Dependency Issues
+Unfortunately a number of dependencies don't seem to build on Linux
+anymore. To solve this, I've used `swift package edit` and checked in
+my changes.
+- ProrsumNet: has an [open pull request](https://github.com/noppoMan/ProrsumNet)
+to solve an issue with ambiguous subscripts.
+- BigInt: The spaces in filenames caused the clang linker to break
