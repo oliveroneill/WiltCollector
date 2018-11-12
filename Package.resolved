@@ -20,20 +20,11 @@
         }
       },
       {
-        "package": "BigInt",
-        "repositoryURL": "https://github.com/attaswift/BigInt",
-        "state": {
-          "branch": null,
-          "revision": "018a5925f60f9e0523edd261de394a0898fe95b7",
-          "version": "3.1.0"
-        }
-      },
-      {
         "package": "BigQuerySwift",
         "repositoryURL": "https://github.com/oliveroneill/BigQuerySwift.git",
         "state": {
           "branch": "query-support",
-          "revision": "90b2a6a80decf8d63b5a00c27d1ef4a9e9d6db68",
+          "revision": "52b21862e27d84f137d7010275a7182b60ef8b2a",
           "version": null
         }
       },
@@ -107,15 +98,6 @@
           "branch": null,
           "revision": "b278e88142a3b5a87feabc44b6522dabfcda8f99",
           "version": "0.3.3"
-        }
-      },
-      {
-        "package": "ProrsumNet",
-        "repositoryURL": "https://github.com/noppoman/ProrsumNet.git",
-        "state": {
-          "branch": null,
-          "revision": "941e0c65df620467130e9eb2496a3c1275c1d307",
-          "version": "0.1.3"
         }
       },
       {
