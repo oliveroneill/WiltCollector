@@ -15,3 +15,5 @@ before_install:
 script:
   - swift package edit ProrsumNet || true
   - ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR
+  - swift package edit ProrsumNet || true
+  - swift test
