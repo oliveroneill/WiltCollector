@@ -32,7 +32,6 @@ RUN wget $SWIFT_DOWNLOAD_URL
 RUN tar -zxf $SWIFTFILE.tar.gz
 ENV PATH $PWD/$SWIFTFILE/usr/bin:"${PATH}"
 
-COPY . WiltCollectorBuild
 WORKDIR WiltCollectorBuild
 
 CMD ["/bin/bash", "./package-for-lambda.sh"]
