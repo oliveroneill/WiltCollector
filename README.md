@@ -49,5 +49,5 @@ anymore. To solve this, I've used `swift package edit` and checked in
 my changes.
 - ProrsumNet: has an [open pull request](https://github.com/noppoMan/ProrsumNet)
 to solve an issue with ambiguous subscripts.
-- BigInt: The spaces in filenames caused the clang linker to break. This only
-seems to be an issue with my build but I can't figure out how.
+- BigInt: The spaces in filenames caused the clang linker to break. Seems to be
+an LLVM bug, see [here](https://forums.swift.org/t/no-spaces-allowed-during-building/15599).
