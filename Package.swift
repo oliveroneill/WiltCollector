@@ -11,12 +11,13 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/oliveroneill/Soft.git", .branch("master")),
-        .package(url: "https://github.com/swift-aws/dynamodb.git", .upToNextMajor(from: "1.0.0")),
-        .package(url: "https://github.com/oliveroneill/BigQuerySwift.git", .branch("query-support")),
+        .package(url: "https://github.com/oliveroneill/BigQuerySwift.git", .branch("master")),
+        .package(url: "https://github.com/IBM-Swift/SwiftyRequest.git", .upToNextMajor(from: "1.0.0")),
+        .package(url: "https://github.com/saga-dash/auth-library-swift.git", .branch("master")),
     ],
     targets: [
         .target(name: "WiltCollector", dependencies: ["WiltCollectorCore"]),
-        .target(name: "WiltCollectorCore", dependencies: ["Soft", "SwiftAWSDynamodb", "BigQuerySwift"]),
+        .target(name: "WiltCollectorCore", dependencies: ["Soft", "SwiftyRequest", "BigQuerySwift", "OAuth2"]),
         .testTarget(
             name: "WiltCollectorCoreTests",
             dependencies: ["WiltCollectorCore"]),

@@ -11,30 +11,21 @@
         }
       },
       {
-        "package": "AWSSDKSwiftCore",
-        "repositoryURL": "https://github.com/noppoMan/aws-sdk-swift-core.git",
+        "package": "BigInt",
+        "repositoryURL": "https://github.com/attaswift/BigInt",
         "state": {
           "branch": null,
-          "revision": "48298a7bec6c838553f314cb48c81f2a363e8253",
-          "version": "1.0.10"
+          "revision": "018a5925f60f9e0523edd261de394a0898fe95b7",
+          "version": "3.1.0"
         }
       },
       {
         "package": "BigQuerySwift",
         "repositoryURL": "https://github.com/oliveroneill/BigQuerySwift.git",
         "state": {
-          "branch": "query-support",
-          "revision": "52b21862e27d84f137d7010275a7182b60ef8b2a",
+          "branch": "master",
+          "revision": "c5c379fdc855e20a89ede21a151877a68164eff4",
           "version": null
-        }
-      },
-      {
-        "package": "CHTTPParser",
-        "repositoryURL": "https://github.com/Zewo/CHTTPParser.git",
-        "state": {
-          "branch": null,
-          "revision": "88306ab33bb316b2eedd39c90f4be8f4ebf65a11",
-          "version": "0.14.0"
         }
       },
       {
@@ -47,15 +38,6 @@
         }
       },
       {
-        "package": "CLibreSSL",
-        "repositoryURL": "https://github.com/vapor/clibressl.git",
-        "state": {
-          "branch": null,
-          "revision": "9ebe7fffd3f7d3cd3377696aeaa867a77f2418dd",
-          "version": "1.0.1"
-        }
-      },
-      {
         "package": "CryptoSwift",
         "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift.git",
         "state": {
@@ -65,39 +47,12 @@
         }
       },
       {
-        "package": "SwiftAWSDynamodb",
-        "repositoryURL": "https://github.com/swift-aws/dynamodb.git",
-        "state": {
-          "branch": null,
-          "revision": "c559b7df021ea1af15c57beca5244656a7df5030",
-          "version": "1.1.6"
-        }
-      },
-      {
-        "package": "HypertextApplicationLanguage",
-        "repositoryURL": "https://github.com/noppoMan/HypertextApplicationLanguage.git",
-        "state": {
-          "branch": null,
-          "revision": "e6216c13fd510e31e70e6f409936f1a656db1f33",
-          "version": "1.0.1"
-        }
-      },
-      {
         "package": "LoggerAPI",
         "repositoryURL": "https://github.com/IBM-Swift/LoggerAPI.git",
         "state": {
           "branch": null,
           "revision": "5041f2673aa75d6e973d9b6bd3956bc5068387c8",
           "version": "1.7.3"
-        }
-      },
-      {
-        "package": "Prorsum",
-        "repositoryURL": "https://github.com/noppoMan/Prorsum.git",
-        "state": {
-          "branch": null,
-          "revision": "b278e88142a3b5a87feabc44b6522dabfcda8f99",
-          "version": "0.3.3"
         }
       },
       {

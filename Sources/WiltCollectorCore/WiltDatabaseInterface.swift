@@ -1,15 +1,16 @@
 import Foundation
 
 public class WiltDatabase: DatabaseInterface {
-    private let dynamo = DynamoDBInterface()
+    private let firestore: FireStoreInterface
     private let bigQuery: BigQueryInterface
 
-    public init(bigQueryProjectId: String) throws {
-        bigQuery = try BigQueryInterface(projectId: bigQueryProjectId)
+    public init(projectID: String) throws {
+        firestore = try FireStoreInterface(projectID: projectID)
+        bigQuery = try BigQueryInterface(projectId: projectID)
     }
 
     public func getUsers() throws -> [User] {
-        return try dynamo.getUsers()
+        return try firestore.getUsers()
     }
 
     public func getTimeOfLastUpdate(user: User) throws -> TimeInterval {

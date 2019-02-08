@@ -1,6 +1,4 @@
 import Foundation
-import SwiftAWSDynamodb
-import AWSSDKSwiftCore
 
 /// Model for an Artist
 public struct Artist: Equatable {
@@ -33,12 +31,19 @@ public protocol DatabaseInterface {
 }
 
 /// A user
-public struct User: Equatable {
+public struct User: Decodable, Equatable {
     let id: String
     // These tokens are Spotify specific
     let accessToken: String
     let refreshAccessToken: String
     let expiresAt: Date
+    init(id: String, accessToken: String, refreshAccessToken: String,
+         expiresAt: Date) {
+        self.id = id
+        self.accessToken = accessToken
+        self.refreshAccessToken = refreshAccessToken
+        self.expiresAt = expiresAt
+    }
 }
 
 /// Errors that occur when getting all users
