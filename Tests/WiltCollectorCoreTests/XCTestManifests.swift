@@ -14,6 +14,7 @@ extension FireStoreInterfaceTests {
         ("testGetUsersError", testGetUsersError),
         ("testGetUsersInvalidDate", testGetUsersInvalidDate),
         ("testGetUsersInvalidType", testGetUsersInvalidType),
+        ("testGetUsersMultiplePages", testGetUsersMultiplePages),
     ]
 }
 
