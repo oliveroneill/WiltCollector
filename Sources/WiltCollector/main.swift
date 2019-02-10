@@ -20,9 +20,9 @@ func main() {
     } catch {
         fatalError("Failed to create database: \(error)")
     }
-    let users: [User]
+    let users: AnyIterator<User>
     do {
-        users = try db.getUsers()
+        users = try db.getUsers().makeIterator()
     } catch {
         fatalError("Getting users failed: \(error)")
     }
@@ -42,12 +42,11 @@ func main() {
     /// - Parameter index: The current index
     func updateUsersRecursively(index: Int) {
         // Check if we've finished all users
-        if index >= users.count {
+        guard let user = users.next() else {
             print("Finished updating users")
             dispatchGroup.leave()
             return
         }
-        let user = users[index]
         print("Creating client with", clientID)
         // Create client for this user
         let client = SpotifyPlayHistoryClient(

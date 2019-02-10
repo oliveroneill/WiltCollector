@@ -25,7 +25,7 @@ public protocol PlayHistoryInterface {
 
 /// Interface doing database operations
 public protocol DatabaseInterface {
-    func getUsers() throws -> [User]
+    func getUsers() throws -> AnySequence<User>
     func getTimeOfLastUpdate(user: User) throws -> TimeInterval
     func insert(items: [PlayRecord], user: User) throws
 }

@@ -13,6 +13,18 @@ enum ListResponse<T: Decodable> {
 public struct ListHTTPResponse<T : Decodable>: Decodable {
     let documents: [ListDocument<T>]
     let nextPageToken: String?
+
+    var isAnotherPageAvailable: Bool {
+        return nextPageToken != nil
+    }
+
+    func nextPage(client: FireStoreClient,
+                  completionHandler: @escaping (ListResponse<T>) -> Void) {
+        return client.list(
+            pageToken: nextPageToken,
+            completionHandler: completionHandler
+        )
+    }
 }
 
 /// A single document from list command in Firestore
@@ -103,12 +115,18 @@ struct FireStoreClient {
         )
     }
 
-    func list<T : Decodable>(completionHandler: @escaping (ListResponse<T>) -> Void) {
+    func list<T : Decodable>(pageToken: String? = nil,
+                             completionHandler: @escaping (ListResponse<T>) -> Void) {
+        let queryParam: String
+        if let pageToken = pageToken {
+            queryParam = "?pageToken=\(pageToken)"
+        } else {
+            queryParam = ""
+        }
         client.get(
-            url: listUrl,
+            url: listUrl + queryParam,
             headers: ["Authorization": "Bearer " + authenticationToken]
         ) { (body, response, error) in
-            // TODO: next token follow!
             if let error = error {
                 completionHandler(.error(error))
                 return

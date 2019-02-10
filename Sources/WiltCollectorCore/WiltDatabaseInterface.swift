@@ -9,7 +9,7 @@ public class WiltDatabase: DatabaseInterface {
         bigQuery = try BigQueryInterface(projectId: projectID)
     }
 
-    public func getUsers() throws -> [User] {
+    public func getUsers() throws -> AnySequence<User> {
         return try firestore.getUsers()
     }
 

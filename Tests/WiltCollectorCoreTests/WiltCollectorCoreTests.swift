@@ -33,8 +33,8 @@ final class WiltCollectorCoreTests: XCTestCase {
             self.timeOfLastUpdate = timeOfLastUpdate
         }
 
-        func getUsers() throws -> [User] {
-            return []
+        func getUsers() throws -> AnySequence<User> {
+            return AnySequence([])
         }
 
         func getTimeOfLastUpdate(user: User) throws -> TimeInterval {
@@ -110,8 +110,8 @@ final class WiltCollectorCoreTests: XCTestCase {
     func testUpdateHandlesFailedInserts() {
         class FakeDatabase: DatabaseInterface {
             var insertCalls: [([PlayRecord], User)] = []
-            func getUsers() throws -> [User] {
-                return []
+            func getUsers() throws -> AnySequence<User> {
+                return AnySequence([])
             }
             func getTimeOfLastUpdate(user: User) throws -> TimeInterval {
                 return 0
@@ -135,8 +135,8 @@ final class WiltCollectorCoreTests: XCTestCase {
     func testUpdateHandlesNoLastUpdate() {
         class FakeDatabase: DatabaseInterface {
             var insertCalls: [([PlayRecord], User)] = []
-            func getUsers() throws -> [User] {
-                return []
+            func getUsers() throws -> AnySequence<User> {
+                return AnySequence([])
             }
 
             func getTimeOfLastUpdate(user: User) throws -> TimeInterval {
