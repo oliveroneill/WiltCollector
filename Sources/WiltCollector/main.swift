@@ -16,7 +16,7 @@ func main() {
     }
     let db: WiltDatabase
     do {
-        db = try WiltDatabase(bigQueryProjectId: projectId)
+        db = try WiltDatabase(projectID: projectId)
     } catch {
         fatalError("Failed to create database: \(error)")
     }
