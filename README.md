@@ -44,4 +44,4 @@ You'll need to create a table called `users`.
 ### Table Columns
 play_history (BigQuery): user_id, date, artists, name, primary_artist, track_id
 
-WiltUsers (DynamoDB): access_token, expires_at, refresh_token
+users (FireStore): access_token, expires_at, refresh_token
