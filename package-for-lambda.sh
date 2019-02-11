@@ -4,8 +4,6 @@ set -e
 
 BUILD_DIR=.build/${BUILD_CONFIGURATION}
 swift package update
-swift package edit ProrsumNet || true
-swift package edit BigInt || true
 swift build -c ${BUILD_CONFIGURATION} &&
 ls -lah .build/release/ &&
 cp -r /${SWIFTFILE}/usr/lib/swift/linux/*.so $BUILD_DIR &&
