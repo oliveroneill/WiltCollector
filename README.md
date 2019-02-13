@@ -34,6 +34,10 @@ to `deploy/credentials.json`.
 ### Lambda
 You'll need to set environment variables `BIGQUERY_PROJECT_ID`,
 `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` in the Lambda console.
+**NOTE**: `BIGQUERY_PROJECT_ID` is now also used for the Firebase project ID,
+so you'll need to ensure these exist under the same project within Google
+Cloud. These should be separated into separate environment variables at some
+point soon.
 
 ### BigQuery
 You'll need to create a BigQuery table called `wilt_play_history.play_history`.
