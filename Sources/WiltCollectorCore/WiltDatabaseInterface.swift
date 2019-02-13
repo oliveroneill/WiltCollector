@@ -6,7 +6,7 @@ public class WiltDatabase: DatabaseInterface {
 
     public init(projectID: String) throws {
         firestore = try FireStoreInterface(projectID: projectID)
-        bigQuery = try BigQueryInterface(projectId: projectID)
+        bigQuery = try BigQueryInterface(projectID: projectID)
     }
 
     public func getUsers() throws -> AnySequence<User> {
