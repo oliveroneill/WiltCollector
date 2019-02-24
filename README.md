@@ -49,3 +49,6 @@ You'll need to create a table called `users`.
 play_history (BigQuery): user_id, date, artists, name, primary_artist, track_id
 
 users (FireStore): access_token, expires_at, refresh_token
+
+## TODO
+- Some sort of exponential backoff if requests start failing (in case Spotify bans me)
