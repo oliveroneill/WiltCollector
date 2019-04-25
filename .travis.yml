@@ -8,11 +8,6 @@ matrix:
     - os: osx
       osx_image: xcode10.2
       sudo: required
-  # Failing due to `swift package edit` not working
-  allow_failures:
-    - os: linux
-      dist: trusty
-      sudo: required
 
 before_install:
   - git clone https://github.com/IBM-Swift/Package-Builder.git
