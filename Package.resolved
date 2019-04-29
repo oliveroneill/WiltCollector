@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/oliveroneill/BigQuerySwift.git",
         "state": {
           "branch": "master",
-          "revision": "c5c379fdc855e20a89ede21a151877a68164eff4",
+          "revision": "ad232589360d3cd32b456cdb98e36c71f5f0cf53",
           "version": null
         }
       },
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/IBM-Swift/CircuitBreaker.git",
         "state": {
           "branch": null,
-          "revision": "81581e3fb094ab4879aa2c5ce54201f1dbce0a7f",
-          "version": "5.0.1"
+          "revision": "63db267d5a1797fd9fe7fc1de6a319b37f851963",
+          "version": "5.0.2"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift.git",
         "state": {
           "branch": null,
-          "revision": "8b3435bd3236819318cde87c8d9315fb89906df3",
-          "version": "0.14.0"
+          "revision": "5da70ba744d58d772201f03600eb16c53197652d",
+          "version": "0.15.0"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/IBM-Swift/LoggerAPI.git",
         "state": {
           "branch": null,
-          "revision": "d0ccb4158b83f8692531892a9c894bb757593c6f",
-          "version": "1.8.0"
+          "revision": "e29073bb7cecf3673e56bcb16180e8fd0cb091f6",
+          "version": "1.8.1"
         }
       },
       {
@@ -69,7 +69,7 @@
         "repositoryURL": "https://github.com/oliveroneill/Soft.git",
         "state": {
           "branch": "master",
-          "revision": "1e31704a0ca41c33ceed8f96af08a99ff70155fb",
+          "revision": "000215572d4c4804894844c460b24570ed63fc4d",
           "version": null
         }
       },

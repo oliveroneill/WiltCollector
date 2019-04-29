@@ -120,7 +120,7 @@ public class BigQueryInterface {
                 user_id: user.id
             )
         }
-        var response: InsertResponse?
+        var response: Result<InsertHTTPResponse, Error>?
         try bigQuery.insert(rows:  schema) { r in
             response = r
             s.signal()
@@ -130,9 +130,9 @@ public class BigQueryInterface {
             fatalError("Unexpected empty insert response")
         }
         switch r {
-        case .error(let e):
+        case .failure(let e):
             throw e
-        case .insertResponse(let insertResponse):
+        case .success(let insertResponse):
             if let errors = insertResponse.insertErrors {
                 throw WiltInsertError.errors(errors)
             }
