@@ -59,6 +59,7 @@ public class BigQueryInterface {
 
     enum WiltQueryError: Error {
         case errors([BigQueryError])
+        case noRows
     }
 
     enum WiltInsertError: Error {
@@ -88,7 +89,7 @@ public class BigQueryInterface {
         case .queryResponse(let result):
             guard let rtn = result.rows?.first?.date else {
                 guard let errors = result.errors else {
-                    return Date().timeIntervalSince1970
+                    throw WiltQueryError.noRows
                 }
                 throw WiltQueryError.errors(errors)
             }
