@@ -17,6 +17,11 @@ mkdir -p $DEST &&
 cp $BUILD_DIR/$EXECUTABLE_NAME $DEST &&
 cp $BUILD_DIR/./*.so $DEST &&
 cp $BUILD_DIR/./*.so.* $DEST &&
+# I'll be honest, I'm not sure what 61 or 61.1 means but this fixes
+# AWS Lambda issues...
+mv $BUILD_DIR/libicui18nswift.so.61.1 $DEST/libicui18nswift.so.61 &&
+mv $BUILD_DIR/libicudataswift.so.61.1 $DEST/libicudataswift.so.61 &&
+mv $BUILD_DIR/libicuucswift.so.61.1 $DEST/libicuucswift.so.61 &&
 cp index.js $DEST &&
 
 cd $DEST &&
